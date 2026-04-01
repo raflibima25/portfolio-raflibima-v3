@@ -41,16 +41,25 @@ import {
 } from "react-icons/si";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 
+export type SkillCategory =
+  | "Utama"
+  | "Frontend"
+  | "Backend"
+  | "Mobile"
+  | "Database"
+  | "Tools";
+
 export type SkillProps = {
   [key: string]: {
     icon: JSX.Element;
     background: string;
     color: string;
     isActive?: boolean;
+    category: SkillCategory;
   };
 };
 
-const iconSize = 26;
+const iconSize = 20;
 
 export const STACKS: SkillProps = {
   HTML: {
@@ -58,251 +67,293 @@ export const STACKS: SkillProps = {
     background: "bg-orange-500",
     color: "text-orange-500",
     isActive: true,
+    category: "Utama",
   },
   CSS: {
     icon: <SiCss3 size={iconSize} />,
     background: "bg-blue-500",
     color: "text-blue-500",
     isActive: true,
-  },
-  Bootstrap: {
-    icon: <BsFillBootstrapFill size={iconSize} />,
-    background: "bg-violet-600",
-    color: "text-violet-600",
-    isActive: true,
-  },
-  TailwindCSS: {
-    icon: <SiTailwindcss size={iconSize} />,
-    background: "bg-sky-400",
-    color: "text-sky-400",
-    isActive: true,
+    category: "Utama",
   },
   JavaScript: {
     icon: <SiJavascript size={iconSize} />,
     background: "bg-yellow-400",
     color: "text-yellow-400",
     isActive: true,
+    category: "Utama",
   },
   TypeScript: {
     icon: <SiTypescript size={iconSize} />,
     background: "bg-blue-500",
     color: "text-blue-500",
     isActive: true,
-  },
-  "Vue.js": {
-    icon: <SiVuedotjs size={iconSize} />,
-    background: "bg-green-400",
-    color: "text-green-400",
-    isActive: false,
-  },
-  "React.js": {
-    icon: <SiReact size={iconSize} />,
-    background: "bg-cyan-400",
-    color: "text-cyan-400",
-    isActive: true,
-  },
-  Vite: {
-    icon: <SiVite size={iconSize} />,
-    background: "bg-purple-500",
-    color: "text-purple-500",
-    isActive: true,
-  },
-  "Astro.js": {
-    icon: <SiAstro size={iconSize} />,
-    background: "bg-violet-600",
-    color: "text-violet-600",
-    isActive: true,
-  },
-  "Shadcn UI": {
-    icon: <SiShadcnui size={iconSize} />,
-    background: "bg-neutral-800",
-    color: "text-neutral-800",
-    isActive: true,
-  },
-  "NextAuth.js": {
-    icon: <RiShieldKeyholeFill size={iconSize} />,
-    background: "bg-slate-800",
-    color: "text-slate-800",
-    isActive: true,
-  },
-  TanStack: {
-    icon: <TbBeach size={iconSize} />,
-    background: "bg-amber-500",
-    color: "text-amber-500",
-    isActive: true,
-  },
-  "React Table": {
-    icon: <SiReacttable size={iconSize} />,
-    background: "bg-rose-600",
-    color: "text-rose-600",
-    isActive: false,
-  },
-  "React Hook Form": {
-    icon: <SiReacthookform size={iconSize} />,
-    background: "bg-pink-500",
-    color: "text-pink-500",
-    isActive: false,
-  },
-  "React Router": {
-    icon: <SiReactrouter size={iconSize} />,
-    background: "bg-red-500",
-    color: "text-red-500",
-    isActive: false,
-  },
-  Axios: {
-    icon: <SiAxios size={iconSize} />,
-    background: "bg-violet-600",
-    color: "text-violet-600",
-    isActive: true,
-  },
-  Zod: {
-    icon: <SiZod size={iconSize} />,
-    background: "bg-blue-600",
-    color: "text-blue-600",
-    isActive: true,
-  },
-  "Framer Motion": {
-    icon: <TbBrandFramerMotion size={iconSize} />,
-    background: "bg-yellow-400",
-    color: "text-yellow-400",
-    isActive: true,
-  },
-  Redux: {
-    icon: <SiRedux size={iconSize} />,
-    background: "bg-violet-500",
-    color: "text-violet-500",
-    isActive: true,
-  },
-  Prisma: {
-    icon: <SiPrisma size={iconSize} />,
-    background: "bg-teal-500",
-    color: "text-teal-500",
-    isActive: true,
+    category: "Utama",
   },
   "Next.js": {
     icon: <SiNextdotjs size={iconSize} />,
     background: "bg-neutral-800",
     color: "text-neutral-50",
     isActive: true,
+    category: "Utama",
+  },
+  Bootstrap: {
+    icon: <BsFillBootstrapFill size={iconSize} />,
+    background: "bg-violet-600",
+    color: "text-violet-600",
+    isActive: true,
+    category: "Frontend",
+  },
+  TailwindCSS: {
+    icon: <SiTailwindcss size={iconSize} />,
+    background: "bg-sky-400",
+    color: "text-sky-400",
+    isActive: true,
+    category: "Frontend",
+  },
+  "Vue.js": {
+    icon: <SiVuedotjs size={iconSize} />,
+    background: "bg-green-400",
+    color: "text-green-400",
+    isActive: false,
+    category: "Frontend",
+  },
+  "React.js": {
+    icon: <SiReact size={iconSize} />,
+    background: "bg-cyan-400",
+    color: "text-cyan-400",
+    isActive: true,
+    category: "Frontend",
+  },
+  Vite: {
+    icon: <SiVite size={iconSize} />,
+    background: "bg-purple-500",
+    color: "text-purple-500",
+    isActive: true,
+    category: "Frontend",
+  },
+  "Astro.js": {
+    icon: <SiAstro size={iconSize} />,
+    background: "bg-violet-600",
+    color: "text-violet-600",
+    isActive: true,
+    category: "Frontend",
+  },
+  "Shadcn UI": {
+    icon: <SiShadcnui size={iconSize} />,
+    background: "bg-neutral-800",
+    color: "text-neutral-800",
+    isActive: true,
+    category: "Frontend",
+  },
+  "NextAuth.js": {
+    icon: <RiShieldKeyholeFill size={iconSize} />,
+    background: "bg-slate-800",
+    color: "text-slate-800",
+    isActive: true,
+    category: "Frontend",
+  },
+  TanStack: {
+    icon: <TbBeach size={iconSize} />,
+    background: "bg-amber-500",
+    color: "text-amber-500",
+    isActive: true,
+    category: "Frontend",
+  },
+  "React Table": {
+    icon: <SiReacttable size={iconSize} />,
+    background: "bg-rose-600",
+    color: "text-rose-600",
+    isActive: false,
+    category: "Frontend",
+  },
+  "React Hook Form": {
+    icon: <SiReacthookform size={iconSize} />,
+    background: "bg-pink-500",
+    color: "text-pink-500",
+    isActive: false,
+    category: "Frontend",
+  },
+  "React Router": {
+    icon: <SiReactrouter size={iconSize} />,
+    background: "bg-red-500",
+    color: "text-red-500",
+    isActive: false,
+    category: "Frontend",
+  },
+  Axios: {
+    icon: <SiAxios size={iconSize} />,
+    background: "bg-violet-600",
+    color: "text-violet-600",
+    isActive: true,
+    category: "Frontend",
+  },
+  Zod: {
+    icon: <SiZod size={iconSize} />,
+    background: "bg-blue-600",
+    color: "text-blue-600",
+    isActive: true,
+    category: "Frontend",
+  },
+  "Framer Motion": {
+    icon: <TbBrandFramerMotion size={iconSize} />,
+    background: "bg-yellow-400",
+    color: "text-yellow-400",
+    isActive: true,
+    category: "Frontend",
+  },
+  Redux: {
+    icon: <SiRedux size={iconSize} />,
+    background: "bg-violet-500",
+    color: "text-violet-500",
+    isActive: true,
+    category: "Frontend",
   },
   "Node.js": {
     icon: <SiNodedotjs size={iconSize} />,
     background: "bg-green-600",
     color: "text-green-600",
     isActive: true,
+    category: "Backend",
   },
   "Express.js": {
     icon: <SiExpress size={iconSize} />,
     background: "bg-neutral-800",
     color: "text-neutral-800",
     isActive: true,
+    category: "Backend",
   },
   "Nest.js": {
     icon: <SiNestjs size={iconSize} />,
     background: "bg-rose-600",
     color: "text-rose-600",
     isActive: false,
+    category: "Backend",
   },
   Go: {
     icon: <FaGolang size={iconSize} />,
     background: "bg-sky-500",
     color: "text-sky-500",
     isActive: true,
+    category: "Backend",
   },
   PHP: {
     icon: <SiPhp size={iconSize} />,
     background: "bg-indigo-400",
     color: "text-indigo-400",
     isActive: true,
+    category: "Backend",
   },
   Laravel: {
     icon: <SiLaravel size={iconSize} />,
     background: "bg-red-700",
     color: "text-red-700",
     isActive: true,
+    category: "Backend",
+  },
+  Prisma: {
+    icon: <SiPrisma size={iconSize} />,
+    background: "bg-teal-500",
+    color: "text-teal-500",
+    isActive: true,
+    category: "Backend",
   },
   Kotlin: {
     icon: <SiKotlin size={iconSize} />,
     background: "bg-violet-600",
     color: "text-violet-600",
     isActive: true,
+    category: "Mobile",
   },
   "Jetpack Compose": {
     icon: <SiJetpackcompose size={iconSize} />,
     background: "bg-cyan-800",
     color: "text-cyan-800",
     isActive: true,
+    category: "Mobile",
   },
   PostgreSql: {
     icon: <BiLogoPostgresql size={iconSize} />,
     background: "bg-blue-500",
     color: "text-blue-500",
     isActive: true,
+    category: "Database",
   },
   MySql: {
     icon: <SiMysql size={iconSize} />,
     background: "bg-cyan-700",
     color: "text-cyan-700",
     isActive: true,
+    category: "Database",
   },
   MongoDb: {
     icon: <SiMongodb size={iconSize} />,
     background: "bg-green-600",
     color: "text-green-600",
     isActive: false,
+    category: "Database",
   },
   Firebase: {
     icon: <SiFirebase size={iconSize} />,
     background: "bg-amber-500",
     color: "text-amber-500",
     isActive: true,
+    category: "Database",
   },
   Supabase: {
     icon: <SiSupabase size={iconSize} />,
     background: "bg-emerald-500",
     color: "text-emerald-500",
     isActive: true,
+    category: "Database",
   },
   Jest: {
     icon: <SiJest size={iconSize} />,
     background: "bg-pink-600",
     color: "text-pink-600",
     isActive: false,
+    category: "Tools",
   },
   Docker: {
     icon: <SiDocker size={iconSize} />,
     background: "bg-blue-600",
     color: "text-blue-500",
     isActive: true,
+    category: "Tools",
   },
   AI: {
     icon: <BsRobot size={iconSize} />,
     background: "bg-fuchsia-700",
     color: "text-fuchsia-700",
     isActive: false,
+    category: "Tools",
   },
   Npm: {
     icon: <FaNpm size={iconSize} />,
     background: "bg-red-700",
     color: "text-red-500",
     isActive: true,
+    category: "Tools",
   },
   Yarn: {
     icon: <SiYarn size={iconSize} />,
     background: "bg-violet-800",
     color: "text-sky-400",
     isActive: true,
+    category: "Tools",
   },
   bun: {
     icon: <SiBun size={iconSize} />,
     background: "bg-orange-100",
     color: "text-yellow-50",
     isActive: true,
+    category: "Tools",
   },
   Github: {
     icon: <SiGithub size={iconSize} />,
     background: "bg-slate-800",
     color: "text-neutral-50",
     isActive: true,
+    category: "Tools",
   },
 };

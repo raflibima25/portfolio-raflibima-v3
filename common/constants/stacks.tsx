@@ -38,6 +38,8 @@ import {
   SiZod,
   SiShadcnui,
   SiAxios,
+  SiGooglecloud,
+  SiUbuntu,
 } from "react-icons/si";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 
@@ -353,6 +355,20 @@ export const STACKS: SkillProps = {
     icon: <SiGithub size={iconSize} />,
     background: "bg-slate-800",
     color: "text-neutral-50",
+    isActive: true,
+    category: "Tools",
+  },
+  "Google Cloud Platform": {
+    icon: <SiGooglecloud size={iconSize} />,
+    background: "bg-blue-600",
+    color: "text-blue-500",
+    isActive: true,
+    category: "Tools",
+  },
+  "Ubuntu Server": {
+    icon: <SiUbuntu size={iconSize} />,
+    background: "bg-orange-600",
+    color: "text-orange-500",
     isActive: true,
     category: "Tools",
   },

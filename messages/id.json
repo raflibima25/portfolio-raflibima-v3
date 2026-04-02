@@ -110,6 +110,10 @@
       "title_more_contribution": "Banyak",
       "unit": "hari"
     },
+    "gitlab": {
+      "title": "Kontribusi GitLab",
+      "sub_title": "Aktivitas GitLab saya selama setahun terakhir."
+    },
     "wakatime": {
       "title": "Statistik WakaTime",
       "sub_title": "Aktivitas coding selama 7 hari terakhir.",

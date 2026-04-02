@@ -27,9 +27,10 @@ interface CalendarProps {
     months: Month[];
     colors: string[];
   };
+  theme?: "yellow" | "orange";
 }
 
-const Calendar = ({ data }: CalendarProps) => {
+const Calendar = ({ data, theme = "yellow" }: CalendarProps) => {
   const [selectContribution, setSelectContribution] = useState<{
     count: number | null;
     date: string | null;
@@ -62,7 +63,10 @@ const Calendar = ({ data }: CalendarProps) => {
       };
     }) ?? [];
 
-  const contributionColors = ["#ffffb8", "#ffff8a", "#ffff5c", "#fbe400"];
+  const yellowColors = ["#ffffb8", "#ffff8a", "#ffff5c", "#fbe400"];
+  const orangeColors = ["#ffedd5", "#fdba74", "#fb923c", "#f97316"];
+  const contributionColors = theme === "orange" ? orangeColors : yellowColors;
+
   return (
     <>
       <div className="relative flex flex-col">

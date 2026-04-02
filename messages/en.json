@@ -110,6 +110,10 @@
       "title_more_contribution": "More",
       "unit": "day"
     },
+    "gitlab": {
+      "title": "GitLab Contributions",
+      "sub_title": "My GitLab activity over the past year."
+    },
     "wakatime": {
       "title": "WakaTime Stats",
       "sub_title": "Coding activity over the past 7 days.",

@@ -2,14 +2,15 @@ import { EducationProps } from "../types/education";
 
 export const EDUCATION: EducationProps[] = [
   {
-    school: "SMK (Vocational High School)",
-    major: "Computer Network Engineering (Teknik Jaringan Komputer)",
-    logo: "/images/education/smk.png",
+    school: "Universitas Bina Sarana Informatika",
+    major: "Software Engineering",
+    logo: "/images/education/logo-universitas-bina-sarana-informatika-ubsi.webp",
     location: "Jakarta, Indonesia 🇮🇩",
-    degree: "Vocational High School",
+    degree: "Bachelor's Degree",
+    GPA: "3.78/4.00",
     start_year: 2019,
-    end_year: 2022,
-    link: "#",
+    end_year: 2023,
+    link: "https://www.bsi.ac.id",
   },
 ];
 

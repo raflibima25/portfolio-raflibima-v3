@@ -235,7 +235,7 @@ export const STACKS: SkillProps = {
     background: "bg-sky-500",
     color: "text-sky-500",
     isActive: true,
-    category: "Backend",
+    category: "Utama",
   },
   PHP: {
     icon: <SiPhp size={iconSize} />,
@@ -277,7 +277,7 @@ export const STACKS: SkillProps = {
     background: "bg-blue-500",
     color: "text-blue-500",
     isActive: true,
-    category: "Database",
+    category: "Utama",
   },
   MySql: {
     icon: <SiMysql size={iconSize} />,

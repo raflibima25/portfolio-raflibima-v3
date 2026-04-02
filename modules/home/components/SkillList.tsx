@@ -63,7 +63,7 @@ const SkillList = () => {
                   : "border-neutral-300 bg-transparent text-neutral-500 hover:border-neutral-400 hover:text-neutral-700 dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-neutral-500 dark:hover:text-neutral-200"
               }`}
             >
-              {tab}
+              {t(`skills.tab_${tab}`)}
               <span
                 className={`rounded-full px-1.5 py-0.5 text-xs font-semibold leading-none ${
                   isActive

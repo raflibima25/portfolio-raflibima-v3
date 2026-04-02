@@ -12,8 +12,8 @@ const IntlToggle = () => {
   const [isPending, startTransition] = useTransition();
 
   const locales = [
-    { value: "en", flag: "🇺🇸" },
-    { value: "id", flag: "🇮🇩" },
+    { value: "en", label: "EN" },
+    { value: "id", label: "ID" },
   ];
 
   const currentIndex = locales.findIndex(
@@ -68,7 +68,7 @@ const IntlToggle = () => {
               }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              {locale.flag}
+              {locale.label}
             </motion.div>
           </motion.button>
         ))}
@@ -85,7 +85,7 @@ const IntlToggle = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white"
         >
-          {locales[(currentIndex + 1) % locales.length].flag}
+          {locales[(currentIndex + 1) % locales.length].label}
         </motion.div>
       </button>
     </div>

@@ -3,13 +3,21 @@
     "intro": "Hi, I'm Rafli Bima Pratandra",
     "location": "Based in Jakarta, Indonesia 🇮🇩",
     "location_type": "Hybrid",
+    "open_for_work": "Open for full-time & freelance",
     "resume": {
       "paragraph_1": "A Backend Engineer and Web Developer dedicated to building impactful digital solutions. I specialize in developing scalable backend systems and web applications using a modern tech stack, including Go, Node.js, TypeScript, Next.js, and various backend frameworks.",
       "paragraph_2": "My focus is on crafting software architecture that is well-structured, maintainable, and aligned with business goals. I combine technical expertise with proactive communication and a growth mindset to ensure every project delivers logical clarity and a meaningful real-world impact."
     },
     "skills": {
       "title": "Skills",
-      "sub_title": "My professional skills."
+      "sub_title": "My professional skills.",
+      "tab_Semua": "All",
+      "tab_Utama": "Main",
+      "tab_Frontend": "Frontend",
+      "tab_Backend": "Backend",
+      "tab_Mobile": "Mobile",
+      "tab_Database": "Database",
+      "tab_Tools": "Tools"
     },
     "bento": {
       "title": "Featured Sections",

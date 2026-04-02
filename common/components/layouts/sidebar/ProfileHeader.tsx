@@ -30,16 +30,16 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
         rounded="rounded-full"
       />
 
-      <div className="mt-1 flex items-center gap-2 lg:mt-4">
+      <div className="mt-1 lg:mt-4">
         <Link href="/" passHref>
-          <h2 className="flex-grow text-lg font-medium lg:text-xl">
-            Rafli Bima Pratandra
+          <h2 className="text-lg font-medium lg:text-xl">
+            Rafli Bima Pratandra{" "}
+            <VerifiedIcon
+              size={16}
+              className="mb-0.5 inline-block align-middle text-blue-400"
+            />
           </h2>
         </Link>
-
-        <Tooltip title="Verified">
-          <VerifiedIcon size={18} className="text-blue-400" />
-        </Tooltip>
       </div>
 
       <div className="hidden text-sm text-neutral-600 transition-all duration-300 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400 lg:flex">

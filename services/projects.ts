@@ -15,6 +15,8 @@ export const getProjectsData = async () => {
 
     return {
       ...item,
+      title: item.name,
+      link_github: item.link_repo,
       image: imageData.publicUrl,
     };
   });
@@ -38,6 +40,8 @@ export const getProjectsDataBySlug = async (slug: string) => {
 
   return {
     ...data,
+    title: data.name,
+    link_github: data.link_repo,
     image: imageData.publicUrl,
   };
 };

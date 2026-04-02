@@ -40,6 +40,7 @@ import {
   SiAxios,
   SiGooglecloud,
   SiUbuntu,
+  SiWebrtc,
 } from "react-icons/si";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 
@@ -371,5 +372,19 @@ export const STACKS: SkillProps = {
     color: "text-orange-500",
     isActive: true,
     category: "Tools",
+  },
+  Gin: {
+    icon: <FaGolang size={iconSize} />,
+    background: "bg-teal-600",
+    color: "text-teal-400",
+    isActive: true,
+    category: "Backend",
+  },
+  WebRTC: {
+    icon: <SiWebrtc size={iconSize} />,
+    background: "bg-indigo-600",
+    color: "text-indigo-400",
+    isActive: true,
+    category: "Frontend",
   },
 };

@@ -45,7 +45,7 @@ export const SOCIAL_MEDIA: SocialMediaProps[] = [
     description:
       "Connect for collaboration or explore my professional experience.",
     name: "linkedin",
-    href: "https://www.linkedin.com/in/rafli-bima-pratandra/",
+    href: "https://www.linkedin.com/in/raflibimapratandra/",
     icon: <LinkedinIcon size={iconSize} />,
     backgroundIcon: <LinkedinIcon size={backgroundIconSize} />,
     textColor: "text-sky-300",

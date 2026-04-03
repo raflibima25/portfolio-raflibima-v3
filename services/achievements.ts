@@ -32,6 +32,10 @@ export const getAchievementsData = async ({
 
     return {
       ...item,
+      issuing_organization: item.issuer,
+      issue_date: item.issued_date,
+      expiration_date: item.expired_date,
+      url_credential: item.credential_url,
       image: imageData.publicUrl,
     };
   });

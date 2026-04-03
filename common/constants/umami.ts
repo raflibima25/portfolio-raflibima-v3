@@ -8,11 +8,11 @@ export const UMAMI_ACCOUNT = {
   },
   parameters: {
     startAt: 1717174800000, // 1 Juni 2024 00:00 WIB
-    endAt: 1767190799000, // 31 Desember 2025 23:59 WIB
+    endAt: Date.now(),      // selalu sampai waktu sekarang (dinamis)
     unit: "month",
     timezone: "Asia/Jakarta",
   },
-  is_active: false,
+  is_active: true,
   websites: [
     {
       domain: "raflibima.my.id",

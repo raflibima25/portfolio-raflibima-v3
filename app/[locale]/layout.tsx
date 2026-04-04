@@ -21,24 +21,32 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : process.env.DOMAIN || "",
-  ),
+  metadataBase: new URL(METADATA.baseUrl),
+  title: {
+    default: METADATA.title,
+    template: METADATA.titleTemplate,
+  },
   description: METADATA.description,
   keywords: METADATA.keyword,
   creator: METADATA.creator,
   authors: {
     name: METADATA.creator,
-    url: METADATA.openGraph.url,
+    url: METADATA.baseUrl,
   },
   openGraph: {
-    images: METADATA.profile,
+    title: METADATA.openGraph.title,
+    description: METADATA.openGraph.description,
     url: METADATA.openGraph.url,
     siteName: METADATA.openGraph.siteName,
     locale: METADATA.openGraph.locale,
+    images: METADATA.openGraph.images,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: METADATA.twitter.title,
+    description: METADATA.twitter.description,
+    images: METADATA.twitter.images,
   },
 };
 

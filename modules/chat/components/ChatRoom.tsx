@@ -87,10 +87,19 @@ export const ChatRoom = ({ isWidget = false }: { isWidget?: boolean }) => {
           table: "messages",
         },
         (payload) => {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            payload.new as MessageProps,
-          ]);
+          const raw = payload.new as any;
+          const mapped: MessageProps = {
+            id: raw.id,
+            name: raw.user_name,
+            email: raw.user_email,
+            image: raw.user_image,
+            message: raw.content,
+            is_show: true,
+            is_reply: !!raw.replied_to,
+            reply_to: raw.replied_to ?? "",
+            created_at: raw.created_at,
+          };
+          setMessages((prevMessages) => [...prevMessages, mapped]);
         },
       )
       .on(
@@ -113,7 +122,7 @@ export const ChatRoom = ({ isWidget = false }: { isWidget?: boolean }) => {
     };
   }, [supabase]);
 
-  const filteredMessages = messages.filter((msg) => msg.is_show === true);
+  const filteredMessages = messages;
 
   return (
     <>

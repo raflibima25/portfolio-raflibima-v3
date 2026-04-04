@@ -10,6 +10,9 @@ export const POST = async (request: Request) => {
         user: process.env.NODEMAILER_EMAIL,
         pass: process.env.NODEMAILER_PW,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
 
     // Warna Utama & Tekstur

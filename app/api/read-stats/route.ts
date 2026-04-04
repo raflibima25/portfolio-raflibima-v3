@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 import { getAllTimeSinceToday, getReadStats } from "@/services/wakatime";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async () => {
   try {
     const readStatsResponse = await getReadStats();

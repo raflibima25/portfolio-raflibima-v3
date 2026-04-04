@@ -1,5 +1,5 @@
 const BASE_URL = "https://raflibima.my.id";
-const OG_IMAGE = `${BASE_URL}/images/og.png`;
+const OG_IMAGE = `${BASE_URL}/api/og`;
 const TITLE = "Rafli Bima Pratandra – Software Engineer | Backend Developer";
 const DESCRIPTION =
   "Portfolio of Rafli Bima Pratandra, a Software Engineer specializing in backend development with Golang, Node.js, and Next.js from Indonesia.";

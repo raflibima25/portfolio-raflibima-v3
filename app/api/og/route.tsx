@@ -2,11 +2,9 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-async function loadGoogleFont(
-  font: string,
-  weight: number,
-): Promise<ArrayBuffer> {
+async function loadGoogleFont(font: string, weight: number): Promise<ArrayBuffer> {
   const url = `https://fonts.googleapis.com/css2?family=${font}:wght@${weight}&display=swap`;
+  // Use a non-browser UA so Google Fonts returns truetype (.ttf) instead of woff2
   const css = await (
     await fetch(url, { headers: { "User-Agent": "Next.js OG Image" } })
   ).text();
@@ -18,9 +16,9 @@ async function loadGoogleFont(
 }
 
 export async function GET() {
-  const [interRegular, interBold] = await Promise.all([
-    loadGoogleFont("Inter", 400),
-    loadGoogleFont("Inter", 700),
+  const [poppinsRegular, poppinsSemiBold] = await Promise.all([
+    loadGoogleFont("Poppins", 400),
+    loadGoogleFont("Poppins", 600),
   ]);
 
   return new ImageResponse(
@@ -32,45 +30,29 @@ export async function GET() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0a0a0a",
-          fontFamily: "Inter",
+          backgroundColor: "#0d1117",
+          fontFamily: "Poppins",
           padding: "60px",
-          gap: "56px",
-          position: "relative",
+          gap: "50px",
         }}
       >
-        {/* Background accent */}
-        <div
-          style={{
-            position: "absolute",
-            top: -80,
-            right: -80,
-            width: 400,
-            height: 400,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(251,228,0,0.12) 0%, transparent 70%)",
-            display: "flex",
-          }}
-        />
-
         {/* Profile photo */}
         <div
           style={{
             display: "flex",
             flexShrink: 0,
-            width: 240,
-            height: 240,
-            borderRadius: 24,
+            width: 260,
+            height: 260,
+            borderRadius: 30,
             border: "4px solid #fbe400",
             overflow: "hidden",
-            boxShadow: "0 0 40px rgba(251,228,0,0.25)",
           }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://raflibima.my.id/images/rafli.jpg"
-            width={240}
-            height={240}
+            width={260}
+            height={260}
             alt="Rafli Bima Pratandra"
             style={{ objectFit: "cover" }}
           />
@@ -82,81 +64,70 @@ export async function GET() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            gap: "8px",
+            gap: "6px",
             flex: 1,
           }}
         >
-          {/* Greeting */}
-          <div style={{ fontSize: 20, color: "#888888", fontWeight: 400 }}>
-            Hi, I am 👋
+          <div style={{ fontSize: 22, color: "#8b9cb3", fontWeight: 400 }}>
+            Hi dear, I am
           </div>
-
-          {/* Name */}
           <div
             style={{
-              fontSize: 50,
-              fontWeight: 700,
-              color: "#ffffff",
+              fontSize: 48,
+              fontWeight: 600,
+              color: "#f0f4f8",
               lineHeight: 1.1,
             }}
           >
             Rafli Bima Pratandra
           </div>
-
-          {/* Role */}
           <div
             style={{
               fontSize: 24,
               color: "#fbe400",
-              fontWeight: 700,
-              marginTop: "2px",
+              fontWeight: 600,
+              marginTop: "4px",
             }}
           >
-            Software Engineer · Backend Developer
+            Software Engineer | Backend Developer
           </div>
 
           {/* Divider */}
           <div
             style={{
-              width: 72,
+              width: 80,
               height: 4,
               backgroundColor: "#fbe400",
               borderRadius: 2,
               marginTop: "16px",
               marginBottom: "16px",
-              display: "flex",
             }}
           />
 
-          {/* Skills pills */}
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {["Golang", "TypeScript", "Next.js", "gRPC", "PostgreSQL"].map(
-              (skill) => (
-                <div
-                  key={skill}
-                  style={{
-                    display: "flex",
-                    backgroundColor: "rgba(251,228,0,0.1)",
-                    border: "1px solid rgba(251,228,0,0.3)",
-                    color: "#fbe400",
-                    fontSize: 16,
-                    fontWeight: 400,
-                    padding: "6px 16px",
-                    borderRadius: 100,
-                  }}
-                >
-                  {skill}
-                </div>
-              ),
-            )}
+          {/* CTA Button */}
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: "#fbe400",
+                color: "#0d1117",
+                fontSize: 22,
+                fontWeight: 600,
+                padding: "14px 32px",
+                borderRadius: 12,
+              }}
+            >
+              {"Let's Connect →"}
+            </div>
           </div>
 
-          {/* Domain */}
+          {/* Domain hint */}
           <div
             style={{
               fontSize: 16,
-              color: "#555555",
-              marginTop: "18px",
+              color: "#8b9cb3",
+              marginTop: "14px",
             }}
           >
             raflibima.my.id
@@ -168,9 +139,9 @@ export async function GET() {
       width: 1200,
       height: 630,
       fonts: [
-        { name: "Inter", data: interRegular, weight: 400 },
-        { name: "Inter", data: interBold, weight: 700 },
+        { name: "Poppins", data: poppinsRegular, weight: 400 },
+        { name: "Poppins", data: poppinsSemiBold, weight: 600 },
       ],
-    },
+    }
   );
 }

@@ -2,7 +2,6 @@ import {
   BsGithub as GithubIcon,
   BsInstagram as InstagramIcon,
   BsLinkedin as LinkedinIcon,
-  BsTiktok as TiktokIcon,
 } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
 
@@ -52,19 +51,6 @@ export const SOCIAL_MEDIA: SocialMediaProps[] = [
     backgroundColor: "bg-sky-300",
     borderColor: "border-sky-300",
     backgroundGradientColor: "bg-gradient-to-b from-sky-700 to-sky-900",
-    isShow: true,
-  },
-  {
-    title: "Join the Fun",
-    description: "Follow me on TikTok for entertaining and engaging content.",
-    name: "tiktok",
-    href: "https://www.tiktok.com/@raflibp_/",
-    icon: <TiktokIcon size={iconSize} />,
-    backgroundIcon: <TiktokIcon size={backgroundIconSize} />,
-    textColor: "text-neutral-400",
-    backgroundColor: "bg-neutral-400",
-    borderColor: "border-neutral-400",
-    backgroundGradientColor: "bg-gradient-to-b from-neutral-700 to-neutral-900",
     isShow: true,
   },
   {

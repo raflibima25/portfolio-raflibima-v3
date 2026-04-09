@@ -70,6 +70,9 @@ export const metadata: Metadata = {
     description: METADATA.twitter.description,
     images: METADATA.twitter.images,
   },
+  verification: {
+    google: "15oES09DAAoJ_Pk44n-oBNf4OCshSLtXzLGEiiEsUoU",
+  },
 };
 
 interface RootLayoutProps {

@@ -32,7 +32,7 @@ export const generateMetadata = async ({
   const locale = params.locale || "en";
 
   return {
-    title: `${project.title} ${METADATA.exTitle}`,
+    title: project.title,
     description: project.description,
     openGraph: {
       images: project.image,

@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "ChatRoomPage" });
   return {
-    title: `${t("title")} ${METADATA.exTitle}`,
+    title: t("title"),
     description: t("description"),
     alternates: { canonical: `${METADATA.baseUrl}/${locale}/chat` },
   };

@@ -17,7 +17,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "ProjectsPage" });
 
   return {
-    title: `${t("title")} ${METADATA.exTitle}`,
+    title: t("title"),
     description: t("description"),
     keywords: "portfolio frontend developer, software engineer jambi",
     alternates: {

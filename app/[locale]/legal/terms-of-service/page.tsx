@@ -4,7 +4,7 @@ import PageHeading from "@/common/components/elements/PageHeading";
 import { METADATA } from "@/common/constants/metadata";
 
 export const metadata: Metadata = {
-  title: `Terms of Service ${METADATA.exTitle}`,
+  title: "Terms of Service",
   description:
     "Terms of Service for Rafli Bima Pratandra's Portfolio App regarding TikTok API usage",
   keywords: "portfolio frontend developer, terms of service, tiktok api",

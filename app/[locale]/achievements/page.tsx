@@ -18,7 +18,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "AchievementsPage" });
 
   return {
-    title: `${t("title")} ${METADATA.exTitle}`,
+    title: t("title"),
     description: t("description"),
     keywords: "backend engineer achievements, certificates, rafli bima pratandra",
     alternates: {

@@ -4,7 +4,7 @@ import PageHeading from "@/common/components/elements/PageHeading";
 import { METADATA } from "@/common/constants/metadata";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy ${METADATA.exTitle}`,
+  title: "Privacy Policy",
   description:
     "Privacy Policy for Rafli Bima Pratandra's Portfolio App regarding TikTok API integration",
   keywords: "portfolio frontend developer, privacy policy, tiktok api",

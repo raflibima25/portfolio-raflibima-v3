@@ -17,7 +17,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "ContentsPage" });
 
   return {
-    title: `${t("title")} ${METADATA.exTitle}`,
+    title: t("title"),
     description: t("description"),
     alternates: {
       canonical: `${METADATA.baseUrl}/${locale}/contents`,

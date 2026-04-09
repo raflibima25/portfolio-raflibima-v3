@@ -13,7 +13,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "ContactPage" });
   return {
-    title: `${t("title")} ${METADATA.exTitle}`,
+    title: t("title"),
     description: t("description"),
     alternates: { canonical: `${METADATA.baseUrl}/${locale}/contact` },
   };

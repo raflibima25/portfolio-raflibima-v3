@@ -8,6 +8,7 @@ import { ProjectItem } from "@/common/types/projects";
 import { METADATA } from "@/common/constants/metadata";
 import { loadMdxFiles } from "@/common/libs/mdx";
 import { getProjectsDataBySlug } from "@/services/projects";
+import JsonLd from "@/common/components/seo/JsonLd";
 
 interface ProjectDetailPageProps {
   params: {
@@ -50,9 +51,31 @@ export const generateMetadata = async ({
 
 const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   const data = await getProjectDetail(params?.slug);
+  const locale = params.locale || "en";
+
+  const softwareAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: data?.title,
+    description: data?.description,
+    url: `${METADATA.baseUrl}/${locale}/projects/${params.slug}`,
+    image: data?.image,
+    applicationCategory: "WebApplication",
+    operatingSystem: "Web",
+    author: {
+      "@type": "Person",
+      name: "Rafli Bima Pratandra",
+      url: METADATA.baseUrl,
+    },
+    creator: {
+      "@type": "Person",
+      name: "Rafli Bima Pratandra",
+    },
+  };
 
   return (
     <Container data-aos="fade-up">
+      <JsonLd data={softwareAppSchema} />
       <BackButton url="/projects" />
       <PageHeading title={data?.title} description={data?.description} />
       <ProjectDetail {...data} />

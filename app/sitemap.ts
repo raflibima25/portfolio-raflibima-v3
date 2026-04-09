@@ -1,6 +1,17 @@
 import type { MetadataRoute } from "next";
+import { createClient } from "@supabase/supabase-js";
 import { METADATA } from "@/common/constants/metadata";
-import { getProjectsData } from "@/services/projects";
+
+// Use the vanilla supabase-js client (no cookies) — the SSR cookie-based
+// server client throws when called outside a Request context (e.g. sitemap).
+const getSupabaseClient = () =>
+  createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
+/** Round a number to 2 decimal places to avoid floating-point display issues */
+const round2 = (n: number) => Math.round(n * 100) / 100;
 
 const BASE_URL = METADATA.baseUrl;
 const locales = ["en", "id"] as const;
@@ -26,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}/${locale}${route.path}`,
       lastModified: now,
       changeFrequency: route.changeFrequency,
-      priority: locale === "en" ? route.priority : route.priority - 0.05,
+      priority: locale === "en" ? route.priority : round2(route.priority - 0.05),
       alternates: {
         languages: {
           en: `${BASE_URL}/en${route.path}`,
@@ -40,9 +51,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Generate project slug entries for each locale
   let projectEntries: MetadataRoute.Sitemap = [];
   try {
-    const projects = await getProjectsData();
+    const supabase = getSupabaseClient();
+    const { data: projects, error } = await supabase
+      .from("projects")
+      .select("slug, updated_at")
+      .order("updated_at", { ascending: false });
 
-    if (projects.length > 0) {
+    if (!error && projects && projects.length > 0) {
       projectEntries = projects.flatMap((project) =>
         locales.map((locale) => ({
           url: `${BASE_URL}/${locale}/projects/${project.slug}`,
@@ -58,6 +73,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           },
         }))
       );
+    }
+
+    if (error) {
+      console.warn("[sitemap] Supabase error fetching projects:", error.message);
     }
   } catch (err) {
     console.warn("[sitemap] Could not fetch project slugs from DB:", err);

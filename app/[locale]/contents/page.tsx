@@ -19,7 +19,7 @@ export async function generateMetadata({
     title: `${t("title")} ${METADATA.exTitle}`,
     description: t("description"),
     alternates: {
-      canonical: `${process.env.DOMAIN}/${locale}/contents`,
+      canonical: `${METADATA.baseUrl}/${locale}/contents`,
     },
   };
 }

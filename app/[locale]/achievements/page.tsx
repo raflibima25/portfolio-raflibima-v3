@@ -21,7 +21,7 @@ export async function generateMetadata({
     description: t("description"),
     keywords: "backend engineer achievements, certificates, rafli bima pratandra",
     alternates: {
-      canonical: `${process.env.DOMAIN}/${locale}/achievements`,
+      canonical: `${METADATA.baseUrl}/${locale}/achievements`,
     },
   };
 }

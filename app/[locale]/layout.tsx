@@ -15,6 +15,7 @@ import { METADATA } from "@/common/constants/metadata";
 import { inter } from "@/common/styles/fonts";
 import SkeletonThemeProvider from "@/SkeletonThemeProvider";
 import { routing } from "@/i18n/routing";
+import JsonLd from "@/common/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -32,6 +33,27 @@ export const metadata: Metadata = {
   authors: {
     name: METADATA.creator,
     url: METADATA.baseUrl,
+  },
+  alternates: {
+    canonical: METADATA.baseUrl,
+    languages: {
+      "en": `${METADATA.baseUrl}/en`,
+      "id": `${METADATA.baseUrl}/id`,
+      "x-default": `${METADATA.baseUrl}/en`,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: METADATA.openGraph.title,
@@ -68,6 +90,22 @@ const RootLayout = async ({
   const messages = await getMessages();
   const session = await getServerSession();
 
+  // Person structured data – tells Google this site belongs to Rafli Bima Pratandra
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Rafli Bima Pratandra",
+    alternateName: ["Rafli Bima", "Rafli"],
+    url: METADATA.baseUrl,
+    image: `${METADATA.baseUrl}${METADATA.profile}`,
+    jobTitle: "Software Engineer",
+    description:
+      "Backend Developer specializing in Golang, Node.js, and Next.js from Indonesia.",
+    nationality: "Indonesian",
+    knowsAbout: ["Golang", "Node.js", "Next.js", "Backend Development", "Software Engineering"],
+    sameAs: METADATA.sameAs,
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning={true}>
       <head>
@@ -76,6 +114,7 @@ const RootLayout = async ({
           src="https://cloud.umami.is/script.js"
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
         />
+        <JsonLd data={personSchema} />
       </head>
       <body className={inter.className}>
         <NextTopLoader

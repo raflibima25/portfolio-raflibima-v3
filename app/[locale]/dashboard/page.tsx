@@ -14,7 +14,7 @@ export async function generateMetadata({
   return {
     title: `${t("title")} ${METADATA.exTitle}`,
     description: t("description"),
-    alternates: { canonical: `${process.env.DOMAIN}/${locale}/dashboard` },
+    alternates: { canonical: `${METADATA.baseUrl}/${locale}/dashboard` },
   };
 }
 

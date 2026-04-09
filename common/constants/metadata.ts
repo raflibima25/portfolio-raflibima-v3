@@ -39,5 +39,10 @@ export const METADATA = {
   },
   exTitle: "| Rafli Bima Pratandra",
   profile: "/images/rafli.jpg",
+  sameAs: [
+    "https://github.com/raflibima25",
+    "https://www.linkedin.com/in/raflibimapratandra/",
+    "https://www.instagram.com/raflibp_/",
+  ],
 };
 

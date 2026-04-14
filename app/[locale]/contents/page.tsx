@@ -20,7 +20,7 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `${METADATA.baseUrl}/${locale}/contents`,
+      canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/contents`,
     },
   };
 }
@@ -34,7 +34,7 @@ const ContentsPage = async ({ params: { locale } }: Props) => {
     name: "Contents – Rafli Bima Pratandra",
     description:
       "Video content and TikTok posts created by Rafli Bima Pratandra about software engineering and technology.",
-    url: `${METADATA.baseUrl}/${locale}/contents`,
+    url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/contents`,
     author: {
       "@type": "Person",
       name: "Rafli Bima Pratandra",

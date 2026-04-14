@@ -44,7 +44,7 @@ export const generateMetadata = async ({
     },
     keywords: project.title,
     alternates: {
-      canonical: `${METADATA.baseUrl}/${locale}/projects/${params.slug}`,
+      canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/projects/${params.slug}`,
     },
   };
 };
@@ -58,7 +58,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
     "@type": "SoftwareApplication",
     name: data?.title,
     description: data?.description,
-    url: `${METADATA.baseUrl}/${locale}/projects/${params.slug}`,
+    url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/projects/${params.slug}`,
     image: data?.image,
     applicationCategory: "WebApplication",
     operatingSystem: "Web",

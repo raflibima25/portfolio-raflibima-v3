@@ -22,7 +22,7 @@ export async function generateMetadata({
     description: t("description"),
     keywords: "backend engineer achievements, certificates, rafli bima pratandra",
     alternates: {
-      canonical: `${METADATA.baseUrl}/${locale}/achievements`,
+      canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/achievements`,
     },
   };
 }
@@ -38,7 +38,7 @@ const AchievementsPage = async ({
     name: "Achievements & Certifications – Rafli Bima Pratandra",
     description:
       "Certifications and achievements earned by Rafli Bima Pratandra as a Software Engineer.",
-    url: `${METADATA.baseUrl}/${locale}/achievements`,
+    url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/achievements`,
     author: {
       "@type": "Person",
       name: "Rafli Bima Pratandra",

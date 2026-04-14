@@ -34,14 +34,6 @@ export const metadata: Metadata = {
     name: METADATA.creator,
     url: METADATA.baseUrl,
   },
-  alternates: {
-    canonical: METADATA.baseUrl,
-    languages: {
-      "en": `${METADATA.baseUrl}/en`,
-      "id": `${METADATA.baseUrl}/id`,
-      "x-default": `${METADATA.baseUrl}/en`,
-    },
-  },
   robots: {
     index: true,
     follow: true,

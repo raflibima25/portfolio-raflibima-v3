@@ -15,7 +15,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: `${METADATA.baseUrl}/${locale}/contact` },
+    alternates: { canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/contact` },
   };
 }
 
@@ -28,7 +28,7 @@ const ContactPage = async ({ params: { locale } }: Props) => {
     name: "Contact Rafli Bima Pratandra",
     description:
       "Get in touch with Rafli Bima Pratandra, a Software Engineer specializing in backend development.",
-    url: `${METADATA.baseUrl}/${locale}/contact`,
+    url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/contact`,
     mainEntity: {
       "@type": "Person",
       name: "Rafli Bima Pratandra",

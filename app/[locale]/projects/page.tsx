@@ -21,7 +21,7 @@ export async function generateMetadata({
     description: t("description"),
     keywords: "portfolio frontend developer, software engineer jambi",
     alternates: {
-      canonical: `${METADATA.baseUrl}/${locale}/projects`,
+      canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/projects`,
     },
   };
 }
@@ -35,7 +35,7 @@ const ProjectsPage = async ({ params: { locale } }: ProjectsPageProps) => {
     name: "Projects – Rafli Bima Pratandra",
     description:
       "A portfolio of software projects built by Rafli Bima Pratandra, including web applications and backend systems.",
-    url: `${METADATA.baseUrl}/${locale}/projects`,
+    url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/projects`,
     author: {
       "@type": "Person",
       name: "Rafli Bima Pratandra",

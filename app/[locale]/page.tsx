@@ -18,12 +18,12 @@ export async function generateMetadata({
     title: `${METADATA.creator} | Portfolio`,
     description: t("resume.paragraph_1"),
     alternates: {
-      canonical: `${METADATA.baseUrl}/${locale}`,
+      canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}`,
     },
     openGraph: {
       title: `${METADATA.creator} | Personal Website`,
       description: t("resume.paragraph_1"),
-      url: `${METADATA.baseUrl}/${locale}`,
+      url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}`,
       siteName: METADATA.openGraph.siteName,
       locale: locale === "id" ? "id_ID" : "en_US",
       type: "website",

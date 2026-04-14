@@ -30,22 +30,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   // Generate one entry per locale per static route
-  // (Next.js 14.1.x does not render alternates.languages in XML output,
-  //  so we explicitly list each locale URL as a separate <url> entry)
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.flatMap((route) =>
-    locales.map((locale) => ({
-      url: `${BASE_URL}/${locale}${route.path}`,
-      lastModified: now,
-      changeFrequency: route.changeFrequency,
-      priority: locale === "en" ? route.priority : round2(route.priority - 0.05),
-      alternates: {
-        languages: {
-          en: `${BASE_URL}/en${route.path}`,
-          id: `${BASE_URL}/id${route.path}`,
-          "x-default": `${BASE_URL}/en${route.path}`,
+    locales.map((locale) => {
+      const isDefault = locale === "en";
+      const pathPrefix = isDefault ? "" : `/${locale}`;
+      return {
+        url: `${BASE_URL}${pathPrefix}${route.path}`,
+        lastModified: now,
+        changeFrequency: route.changeFrequency,
+        priority: isDefault ? route.priority : round2(route.priority - 0.05),
+        alternates: {
+          languages: {
+            en: `${BASE_URL}${route.path}`,
+            id: `${BASE_URL}/id${route.path}`,
+            "x-default": `${BASE_URL}${route.path}`,
+          },
         },
-      },
-    }))
+      };
+    })
   );
 
   // Generate project slug entries for each locale
@@ -59,19 +61,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     if (!error && projects && projects.length > 0) {
       projectEntries = projects.flatMap((project) =>
-        locales.map((locale) => ({
-          url: `${BASE_URL}/${locale}/projects/${project.slug}`,
-          lastModified: new Date(project.updated_at ?? now),
-          changeFrequency: "monthly" as const,
-          priority: locale === "en" ? 0.7 : 0.65,
-          alternates: {
-            languages: {
-              en: `${BASE_URL}/en/projects/${project.slug}`,
-              id: `${BASE_URL}/id/projects/${project.slug}`,
-              "x-default": `${BASE_URL}/en/projects/${project.slug}`,
+        locales.map((locale) => {
+          const isDefault = locale === "en";
+          const pathPrefix = isDefault ? "" : `/${locale}`;
+          return {
+            url: `${BASE_URL}${pathPrefix}/projects/${project.slug}`,
+            lastModified: new Date(project.updated_at ?? now),
+            changeFrequency: "monthly" as const,
+            priority: isDefault ? 0.7 : 0.65,
+            alternates: {
+              languages: {
+                en: `${BASE_URL}/projects/${project.slug}`,
+                id: `${BASE_URL}/id/projects/${project.slug}`,
+                "x-default": `${BASE_URL}/projects/${project.slug}`,
+              },
             },
-          },
-        }))
+          };
+        })
       );
     }
 

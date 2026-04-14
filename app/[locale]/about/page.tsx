@@ -15,7 +15,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: `${METADATA.baseUrl}/${locale}/about` },
+    alternates: { canonical: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/about` },
   };
 }
 
@@ -26,7 +26,7 @@ const AboutPage = async ({ params: { locale } }: Props) => {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     name: "About Rafli Bima Pratandra",
-    url: `${METADATA.baseUrl}/${locale}/about`,
+    url: `${METADATA.baseUrl}${locale === 'en' ? '' : `/${locale}`}/about`,
     mainEntity: {
       "@type": "Person",
       name: "Rafli Bima Pratandra",

@@ -1,19 +1,30 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Container from "@/common/components/elements/Container";
 import PageHeading from "@/common/components/elements/PageHeading";
 import { METADATA } from "@/common/constants/metadata";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "Terms of Service for Rafli Bima Pratandra's Portfolio App regarding TikTok API usage",
-  keywords: "portfolio frontend developer, terms of service, tiktok api",
-  alternates: {
-    canonical: `${process.env.DOMAIN}/terms-of-service`,
-  },
-};
+type Props = { params: { locale: string } };
 
-const TermsOfServicePage = () => {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await Promise.resolve(params);
+  const localePath = locale === "en" ? "" : `/${locale}`;
+  return {
+    title: "Terms of Service",
+    description:
+      "Terms of Service for Rafli Bima Pratandra's Portfolio App regarding TikTok API usage",
+    keywords: "portfolio frontend developer, terms of service, tiktok api",
+    alternates: {
+      canonical: `${METADATA.baseUrl}${localePath}/legal/terms-of-service`,
+      languages: {
+        en: `${METADATA.baseUrl}/legal/terms-of-service`,
+        id: `${METADATA.baseUrl}/id/legal/terms-of-service`,
+        "x-default": `${METADATA.baseUrl}/legal/terms-of-service`,
+      },
+    },
+  };
+}
+
+const TermsOfServicePage = (_props: Props) => {
   return (
     <Container data-aos="fade-up">
       <PageHeading title={"Terms of Service"} />
@@ -26,8 +37,8 @@ const TermsOfServicePage = () => {
             1. Purpose of the Website
           </h2>
           <p>
-            This website is a personal portfolio created to showcase Satria
-            Bahari&apos;s professional projects, technical skills, and social
+            This website is a personal portfolio created to showcase Rafli Bima
+            Pratandra&apos;s professional projects, technical skills, and social
             media presence through integrated API services.
           </p>
         </section>

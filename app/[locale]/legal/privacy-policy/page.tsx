@@ -1,19 +1,30 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Container from "@/common/components/elements/Container";
 import PageHeading from "@/common/components/elements/PageHeading";
 import { METADATA } from "@/common/constants/metadata";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "Privacy Policy for Rafli Bima Pratandra's Portfolio App regarding TikTok API integration",
-  keywords: "portfolio frontend developer, privacy policy, tiktok api",
-  alternates: {
-    canonical: `${process.env.DOMAIN}/privacy-policy`,
-  },
-};
+type Props = { params: { locale: string } };
 
-const PrivacyPolicyPage = () => {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await Promise.resolve(params);
+  const localePath = locale === "en" ? "" : `/${locale}`;
+  return {
+    title: "Privacy Policy",
+    description:
+      "Privacy Policy for Rafli Bima Pratandra's Portfolio App regarding TikTok API integration",
+    keywords: "portfolio frontend developer, privacy policy, tiktok api",
+    alternates: {
+      canonical: `${METADATA.baseUrl}${localePath}/legal/privacy-policy`,
+      languages: {
+        en: `${METADATA.baseUrl}/legal/privacy-policy`,
+        id: `${METADATA.baseUrl}/id/legal/privacy-policy`,
+        "x-default": `${METADATA.baseUrl}/legal/privacy-policy`,
+      },
+    },
+  };
+}
+
+const PrivacyPolicyPage = (_props: Props) => {
   return (
     <Container data-aos="fade-up">
       <PageHeading title={"Privacy Policy"} />

@@ -24,6 +24,8 @@ const staticRoutes = [
   { path: "/achievements", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/contents", priority: 0.8, changeFrequency: "weekly" as const },
+  { path: "/legal/privacy-policy", priority: 0.3, changeFrequency: "yearly" as const },
+  { path: "/legal/terms-of-service", priority: 0.3, changeFrequency: "yearly" as const },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

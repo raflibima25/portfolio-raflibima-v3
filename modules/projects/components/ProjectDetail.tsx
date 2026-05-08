@@ -7,10 +7,12 @@ import { ProjectItem } from "@/common/types/projects";
 import { STACKS } from "@/common/constants/stacks";
 
 import ProjectLink from "./ProjectLink";
+import ProjectGallery from "./ProjectGallery";
 
 const ProjectDetail = ({
   title,
   image,
+  images,
   stacks,
   link_demo,
   link_github,
@@ -62,6 +64,10 @@ const ProjectDetail = ({
           <MDXComponent>{content}</MDXComponent>
         </div>
       ) : null}
+
+      {images && images.length > 0 && (
+        <ProjectGallery images={images} title={title} />
+      )}
     </div>
   );
 };

@@ -73,6 +73,11 @@
     "back_button": "Back",
     "source_code_text": "Source Code",
     "live_demo_text": "Live Demo",
+    "gallery_title": "Gallery",
+    "gallery_close": "Close",
+    "gallery_prev": "Previous image",
+    "gallery_next": "Next image",
+    "gallery_counter": "{current} of {total}",
     "error": "An error occurred on the server.",
     "no_data": "No data available."
   },

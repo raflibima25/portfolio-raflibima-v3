@@ -41,6 +41,12 @@ import {
   SiGooglecloud,
   SiUbuntu,
   SiWebrtc,
+  SiRedis,
+  SiRabbitmq,
+  SiKubernetes,
+  SiElasticsearch,
+  SiXendit,
+  SiMinio,
 } from "react-icons/si";
 import { RiShieldKeyholeFill } from "react-icons/ri";
 
@@ -379,6 +385,48 @@ export const STACKS: SkillProps = {
     color: "text-teal-400",
     isActive: true,
     category: "Backend",
+  },
+  Redis: {
+    icon: <SiRedis size={iconSize} />,
+    background: "bg-red-600",
+    color: "text-red-500",
+    isActive: true,
+    category: "Database",
+  },
+  RabbitMQ: {
+    icon: <SiRabbitmq size={iconSize} />,
+    background: "bg-orange-500",
+    color: "text-orange-500",
+    isActive: true,
+    category: "Backend",
+  },
+  Kubernetes: {
+    icon: <SiKubernetes size={iconSize} />,
+    background: "bg-blue-500",
+    color: "text-blue-500",
+    isActive: true,
+    category: "Tools",
+  },
+  Elasticsearch: {
+    icon: <SiElasticsearch size={iconSize} />,
+    background: "bg-yellow-500",
+    color: "text-yellow-500",
+    isActive: true,
+    category: "Database",
+  },
+  Xendit: {
+    icon: <SiXendit size={iconSize} />,
+    background: "bg-blue-600",
+    color: "text-blue-400",
+    isActive: true,
+    category: "Tools",
+  },
+  MinIO: {
+    icon: <SiMinio size={iconSize} />,
+    background: "bg-red-700",
+    color: "text-red-500",
+    isActive: true,
+    category: "Tools",
   },
   WebRTC: {
     icon: <SiWebrtc size={iconSize} />,

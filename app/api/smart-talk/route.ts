@@ -1,11 +1,13 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
+import { getProjectsData } from "@/services/projects";
+import { ProjectItem } from "@/common/types/projects";
 
 export const dynamic = "force-dynamic";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
-const SYSTEM_PROMPT = `You are "SmartTalk", an AI personal assistant for Rafli Bima Pratandra's portfolio website.
+const BASE_PROMPT = `You are "SmartTalk", an AI personal assistant for Rafli Bima Pratandra's portfolio website.
 Your ONLY role is to answer questions about Rafli's professional background, skills, projects, experience, education, and certifications.
 If a question is unrelated to Rafli's portfolio, politely decline and redirect to portfolio-related topics.
 Always respond in the same language the user uses (Indonesian or English).
@@ -17,7 +19,7 @@ Location: Depok, West Java, Indonesia
 Email: raflibima1106@gmail.com
 LinkedIn: https://www.linkedin.com/in/raflibimapratandra/
 GitHub: https://github.com/raflibima25
-Portfolio: https://raflibima.vercel.app
+Portfolio: https://raflibima.my.id
 Summary: A skilled Software Engineer with 2+ years of experience in managing complex Applications/Websites. Proficient in Golang, JavaScript, and SQL.
 
 === EDUCATION ===
@@ -33,22 +35,6 @@ Summary: A skilled Software Engineer with 2+ years of experience in managing com
 
 2. PT. Ruang Raya Indonesia (Ruangguru) — Frontend Engineer Intern (Remote) | Aug 2022 – Dec 2022
    - Built UIs with HTML, CSS, JavaScript, React.js. Collaborated with UI/Backend teams. Served as Assistant Mentor.
-
-=== PROJECTS ===
-1. FinTrack - Personal Finance Management
-   - Full-stack web app for tracking finances, JWT + Google OAuth2 auth, dynamic transactions, Excel export.
-   - Tech: Golang, Gin, React.js, Vue.js, TailwindCSS, PostgreSQL
-   - Repo: https://github.com/raflibima25/go-fintrack
-
-2. Cami Photobooth
-   - Web-based photobooth with AR face filters, color grading, custom frame editor, countdown timer.
-   - Tech: HTML, CSS, JavaScript, WebRTC
-   - Repo: https://github.com/raflibima25/cami-photobooth
-
-3. Web Portfolio
-   - Personal portfolio website showcasing work and projects.
-   - Tech: HTML, TailwindCSS
-   - URL: https://raflibima25.github.io/portfolio
 
 === TECH STACK / SKILLS ===
 Languages: Golang, JavaScript, TypeScript, PHP, Python
@@ -77,6 +63,23 @@ Monitoring: Grafana, Uptime Kuma
 - Instagram: https://www.instagram.com/raflibp_/
 `;
 
+function buildProjectsSection(projects: ProjectItem[]): string {
+  if (!projects.length) return "";
+
+  const lines = projects
+    .filter((p) => p.is_show)
+    .map((p, i) => {
+      const parts = [`${i + 1}. ${p.title}`];
+      if (p.description) parts.push(`   - ${p.description}`);
+      if (p.stacks?.length) parts.push(`   - Tech: ${p.stacks.join(", ")}`);
+      if (p.link_github) parts.push(`   - Repo: ${p.link_github}`);
+      if (p.link_demo) parts.push(`   - Demo: ${p.link_demo}`);
+      return parts.join("\n");
+    });
+
+  return `\n=== PROJECTS ===\n${lines.join("\n\n")}\n`;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
@@ -87,6 +90,9 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
+
+    const projects = await getProjectsData().catch(() => []);
+    const SYSTEM_PROMPT = BASE_PROMPT + buildProjectsSection(projects as ProjectItem[]);
 
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",

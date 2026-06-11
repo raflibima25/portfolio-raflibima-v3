@@ -1,6 +1,5 @@
 import NextTopLoader from "nextjs-toploader";
 import Script from "next/script";
-import { getServerSession } from "next-auth";
 import { Analytics } from "@vercel/analytics/react";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -69,13 +68,15 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 const RootLayout = async ({
   children,
-  params: { locale },
+  params,
 }: RootLayoutProps) => {
+  const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -83,7 +84,6 @@ const RootLayout = async ({
   setRequestLocale(locale);
 
   const messages = await getMessages();
-  const session = await getServerSession();
 
   // Person structured data – tells Google this site belongs to Rafli Bima Pratandra
   const personSchema = {
@@ -124,7 +124,7 @@ const RootLayout = async ({
           shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
         />
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <NextAuthProvider session={session}>
+          <NextAuthProvider>
             <ThemeProviderContext>
               <SkeletonThemeProvider>
                 <Layouts>{children}</Layouts>

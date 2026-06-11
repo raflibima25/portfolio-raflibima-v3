@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export const GET = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     const { data, error } = await supabase
       .from("messages")
@@ -36,7 +36,7 @@ export const GET = async () => {
 };
 
 export const POST = async (req: Request) => {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     const body = await req.json();
 

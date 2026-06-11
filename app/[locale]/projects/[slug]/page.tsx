@@ -11,10 +11,10 @@ import { getProjectsDataBySlug } from "@/services/projects";
 import JsonLd from "@/common/components/seo/JsonLd";
 
 interface ProjectDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
     locale: string;
-  };
+  }>;
 }
 
 const getProjectDetail = async (slug: string): Promise<ProjectItem> => {
@@ -25,9 +25,10 @@ const getProjectDetail = async (slug: string): Promise<ProjectItem> => {
   return JSON.parse(JSON.stringify(response));
 };
 
-export const generateMetadata = async ({
-  params,
-}: ProjectDetailPageProps): Promise<Metadata> => {
+export const generateMetadata = async (
+  props: ProjectDetailPageProps
+): Promise<Metadata> => {
+  const params = await props.params;
   const project = await getProjectDetail(params?.slug);
   const locale = params.locale || "en";
 
@@ -49,7 +50,8 @@ export const generateMetadata = async ({
   };
 };
 
-const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
+const ProjectDetailPage = async (props: ProjectDetailPageProps) => {
+  const params = await props.params;
   const data = await getProjectDetail(params?.slug);
   const locale = params.locale || "en";
 

@@ -5,11 +5,10 @@ import PageHeading from "@/common/components/elements/PageHeading";
 import Dashboard from "@/modules/dashboard/components/Dashboard";
 import { METADATA } from "@/common/constants/metadata";
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({
-  params: { locale },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "DashboardPage" });
   return {
     title: t("title"),
@@ -18,7 +17,8 @@ export async function generateMetadata({
   };
 }
 
-const DashboardPage = async ({ params: { locale } }: Props) => {
+const DashboardPage = async (props: Props) => {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "DashboardPage" });
   return (
     <Container data-aos="fade-up">

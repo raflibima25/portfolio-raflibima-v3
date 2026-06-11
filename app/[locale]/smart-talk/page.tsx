@@ -5,11 +5,10 @@ import PageHeading from "@/common/components/elements/PageHeading";
 import SmartTalk from "@/modules/smarttalk";
 import { METADATA } from "@/common/constants/metadata";
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({
-  params: { locale },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "SmartTalkPage" });
   return {
     title: t("title"),
@@ -18,7 +17,8 @@ export async function generateMetadata({
   };
 }
 
-const SmartTalkPage = async ({ params: { locale } }: Props) => {
+const SmartTalkPage = async (props: Props) => {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "SmartTalkPage" });
   return (
     <Container data-aos="fade-up">

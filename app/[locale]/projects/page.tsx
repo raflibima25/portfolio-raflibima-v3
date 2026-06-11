@@ -8,12 +8,11 @@ import { METADATA } from "@/common/constants/metadata";
 import JsonLd from "@/common/components/seo/JsonLd";
 
 interface ProjectsPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({
-  params: { locale },
-}: ProjectsPageProps): Promise<Metadata> {
+export async function generateMetadata(props: ProjectsPageProps): Promise<Metadata> {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "ProjectsPage" });
 
   return {
@@ -26,7 +25,8 @@ export async function generateMetadata({
   };
 }
 
-const ProjectsPage = async ({ params: { locale } }: ProjectsPageProps) => {
+const ProjectsPage = async (props: ProjectsPageProps) => {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "ProjectsPage" });
 
   const collectionPageSchema = {

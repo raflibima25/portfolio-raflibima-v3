@@ -28,7 +28,7 @@ const probeDimensions = unstable_cache(
 );
 
 export const getProjectsData = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   let { data, error } = await supabase.from("projects").select();
 
@@ -50,7 +50,7 @@ export const getProjectsData = async () => {
 };
 
 export const getProjectsDataBySlug = async (slug: string) => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   let { data, error } = await supabase
     .from("projects")

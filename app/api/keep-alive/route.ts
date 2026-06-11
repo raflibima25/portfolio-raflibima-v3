@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export const GET = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   try {
     // Lakukan query ringan ke tabel 'messages' untuk memastikan aktivitas (mencegah pause 7 hari)
     const { data, error } = await supabase

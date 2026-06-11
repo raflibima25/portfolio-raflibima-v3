@@ -13,7 +13,7 @@ export const getAchievementsData = async ({
   category,
   search,
 }: GetAchievementsDataProps) => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   let query = supabase.from("achievements").select();
 
@@ -42,7 +42,7 @@ export const getAchievementsData = async ({
 };
 
 export const getAchivementTypes = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase.rpc("get_enum_values", {
     type_name: "achievement_type",
@@ -55,7 +55,7 @@ export const getAchivementTypes = async () => {
 };
 
 export const getAchivementCategories = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase.rpc("get_enum_values", {
     type_name: "achievement_category",

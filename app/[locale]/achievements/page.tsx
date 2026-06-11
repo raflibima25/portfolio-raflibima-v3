@@ -9,12 +9,11 @@ import { Suspense } from "react";
 import JsonLd from "@/common/components/seo/JsonLd";
 
 interface AchievementsPageProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({
-  params: { locale },
-}: AchievementsPageProps): Promise<Metadata> {
+export async function generateMetadata(props: AchievementsPageProps): Promise<Metadata> {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "AchievementsPage" });
 
   return {
@@ -27,9 +26,8 @@ export async function generateMetadata({
   };
 }
 
-const AchievementsPage = async ({
-  params: { locale },
-}: AchievementsPageProps) => {
+const AchievementsPage = async (props: AchievementsPageProps) => {
+  const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "AchievementsPage" });
 
   const achievementsSchema = {

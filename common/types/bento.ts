@@ -2,7 +2,7 @@ export type BentoItemProps = {
   title: string;
   description: string;
   label?: string;
-  icon?: JSX.Element;
+  icon?: React.ReactElement;
   visual?: React.ReactNode;
   href?: string;
   colSpan?: number;

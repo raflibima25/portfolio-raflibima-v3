@@ -4,7 +4,7 @@ export type ServiceProps = {
   description: string;
   label: string;
   children: React.ReactNode;
-  icon?: JSX.Element;
+  icon?: React.ReactElement;
   className?: string;
   isShow?: boolean;
 };

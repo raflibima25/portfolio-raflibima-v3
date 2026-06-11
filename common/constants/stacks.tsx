@@ -3,7 +3,7 @@ import { BsFillBootstrapFill, BsRobot } from "react-icons/bs";
 import { TbBeach, TbBrandFramerMotion } from "react-icons/tb";
 import { FaNpm, FaGolang } from "react-icons/fa6";
 import {
-  SiCss3,
+  SiCss,
   SiExpress,
   SiFramer,
   SiGithub,
@@ -60,7 +60,7 @@ export type SkillCategory =
 
 export type SkillProps = {
   [key: string]: {
-    icon: JSX.Element;
+    icon: React.ReactElement;
     background: string;
     color: string;
     isActive?: boolean;
@@ -79,7 +79,7 @@ export const STACKS: SkillProps = {
     category: "Utama",
   },
   CSS: {
-    icon: <SiCss3 size={iconSize} />,
+    icon: <SiCss size={iconSize} />,
     background: "bg-blue-500",
     color: "text-blue-500",
     isActive: true,

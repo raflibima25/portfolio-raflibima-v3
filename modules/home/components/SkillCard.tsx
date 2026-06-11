@@ -1,6 +1,6 @@
 interface SkillCardProps {
   name: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   color: string;
 }
 

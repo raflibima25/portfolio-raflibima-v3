@@ -12,7 +12,7 @@ interface ProjectLinkProps {
 interface LinkComponentProps {
   url: string;
   text: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
 }
 
 const LinkComponent = ({ url, text, icon }: LinkComponentProps) => {

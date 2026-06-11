@@ -1,7 +1,7 @@
 export type MenuItemProps = {
   title: string;
   href: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   onClick?: () => void;
   className?: string;
   isShow?: boolean;

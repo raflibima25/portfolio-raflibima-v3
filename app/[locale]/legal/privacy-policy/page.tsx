@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const PrivacyPolicyPage = (_props: Props) => {
+const PrivacyPolicyPage = () => {
   return (
     <Container data-aos="fade-up">
       <PageHeading title={"Privacy Policy"} />

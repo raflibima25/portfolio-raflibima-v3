@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const TermsOfServicePage = (_props: Props) => {
+const TermsOfServicePage = () => {
   return (
     <Container data-aos="fade-up">
       <PageHeading title={"Terms of Service"} />

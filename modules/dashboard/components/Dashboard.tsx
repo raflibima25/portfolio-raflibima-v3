@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Codewars from "./Codewars";
 import Monkeytype from "./Monkeytype";
 import CodingActive from "./CodingActive";
@@ -12,7 +13,9 @@ import Umami from "./Umami";
 const Dashboard = () => {
   return (
     <>
-      <Umami />
+      <Suspense>
+        <Umami />
+      </Suspense>
       <Breakline className="my-8" />
       <Contributions endpoint={GITHUB_ACCOUNTS.endpoint} type="github" />
       <Breakline className="my-8" />

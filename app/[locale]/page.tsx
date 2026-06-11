@@ -37,8 +37,7 @@ export async function generateMetadata(props: HomePageProps): Promise<Metadata> 
   };
 }
 
-const HomePage = async (props: HomePageProps) => {
-  const { locale } = await props.params;
+const HomePage = async (_props: HomePageProps) => {
   return (
     <Container data-aos="fade-up">
       <Home />
